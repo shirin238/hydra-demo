@@ -5,10 +5,10 @@ class Book < ActiveFedora::Base
 
   has_many :pages, :property => :is_part_of
 
-  # has_attributes :title, datastream: 'descMetadata', multiple: false
-  # has_attributes :author, datastream: 'descMetadata', multiple: false
+  has_attributes :author, datastream: 'descMetadata', multiple: true
+  has_attributes :title, datastream: 'descMetadata', multiple: true
 
-  delegate :title, to: 'descMetadata'
-  delegate :author, to: 'descMetadata'
+  # delegate :title, to: 'descMetadata'
+  # delegate :author, to: 'descMetadata'
 
 end

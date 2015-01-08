@@ -28,6 +28,8 @@ class BooksController < ApplicationController
 
   def update
     @book.update(book_params)
+    @book.author = params[:book][:author].select { |a| a.present? }
+    @book.save
     respond_with(@book)
   end
 
@@ -42,6 +44,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :author)
+      params.require(:book).permit(:title, :author=>[])
     end
 end
